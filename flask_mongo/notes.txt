@@ -1,0 +1,6 @@
+GET & POST Requests
+===================
+> GET  google.com/index.html: "requesting 'index.html' resource from google.com"
+> POST 
+
+
