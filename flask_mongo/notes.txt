@@ -1,6 +1,23 @@
+<CH.1>[flask basics]
 GET & POST Requests
 ===================
 > GET  google.com/index.html: "requesting 'index.html' resource from google.com"
-> POST 
+> POST "send server some data, expects response"
 
 
+<CH.2>[simple api]
+"Restful API Resource Method Chart"
+RESOURCE      METHOD      PATH      USED_FOR                PARAM           ERROR_CODE
+   +          post        /add      adding 2 numbers        x:int, y: int   200 ok
+                                                                            301 misssing argument
+                                                                            302 not integer
+   -          post        /subtract subtracting 2 numbers   x:int, y: int   200 ok
+                                                                            301 misssing argument
+                                                                            302 not integer                                                                      
+   /          post        /divide   x/y                     x:int, y: int   200 ok
+                                                                            301 misssing argument
+                                                                            302 not integer
+                                                                            303 y is 0
+   *          post        /multiply x*y                     x:int, y: int   200 ok
+                                                                            301 misssing argument
+                                                                            302 not integer
