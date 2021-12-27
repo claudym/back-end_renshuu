@@ -21,3 +21,86 @@ RESOURCE      METHOD      PATH      USED_FOR                PARAM           ERRO
    *          post        /multiply x*y                     x:int, y: int   200 ok
                                                                             301 misssing argument
                                                                             302 not integer
+                                                                           
+
+<CH.3>[docker]
+'Docker is a tool that allows developers, sys-admins etc. to easily deploy their applications in a sandbox (called containers) '
+'to run on the host operating system i.e. Linux. The key benefit of Docker is that it allows users to package an application '
+'with all of its dependencies into a standardized unit for software development.' 
+
+'Unlike virtual machines, containers do not have high overhead and hence enable more efficient usage of the underlying system and resources.'
+install docker:
+-https://developer.fedoraproject.org/tools/docker/docker-installation.html
+-https://docs.docker.com/engine/install/fedora/
+
+install docker compose:
+-https://docs.docker.com/compose/cli-command/
+-https://docs.docker.com/engine/install/linux-postinstall/
+
+docker hub:
+-https://hub.docker.com/
+
+git branch coloring:
+-https://thucnc.medium.com/how-to-show-current-git-branch-with-colors-in-bash-prompt-380d05a24745
+
+
+<CH.4>[mongoDB]
+'MongoDB is a cross-platform, document oriented database that provides high performance, high availability, and easy scalability.'
+document: 'is a set of key-value pairs. Dynamic schema'
+collection: 'a group of MongoDB documents. Do not enforce schema'
+
+doc example:
+{
+   _id: <ObjectId1>,
+   username: "123xyz",
+   contact: {
+               phone: "123-456",
+               email: "xyz@ex.com"
+            }
+   access:  {
+               level: 5,
+               group: "dev"
+            }
+}
+
+install: https://developer.fedoraproject.org/tech/database/mongodb/about.html
+
+[Mongodb]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/8/mongodb-org/4.4/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-4.4.asc
+
+cheat sheet: https://www.mongodb.com/developer/quickstart/cheat-sheet/
+
+create: 'use DB'
+insert: 'db.COLLECTION_NAME.insert({"namae": "suga"})'
+delete: 'db.dropDatabase()'
+create collection: 'db.createCollection(name, options)'
+delete collection: 'db.COLLECTION_NAME.drop()'
+
+<CH.5>[db API]
+'Expose mongoDB operations as service restful API':
+
+#store username and hashed_pw into database
+users.insert_one({
+"username": username,
+"password": hashed_pw,
+"sentence": "test sentence",
+"tokens": 5
+})
+#store the sentence return 200 ok
+users.update_one({
+"username": username
+}, {
+"$set": {
+   "sentence": sentence,
+   "tokens": num_tokens-1
+   }
+})
+
+#get sentence
+sentence= users.find({
+   "username": username      
+   })[0]["sentence"]
