@@ -1,14 +1,14 @@
 from flask import Flask, request
 from flask_restful import Api, Resource
 
-app = Flask(__name__)
-api = Api(app)
+server = Flask(__name__)
+api = Api(server)
 
-@app.route('/')
+@server.route('/')
 def hello_world():
-  return "Hello 世界！"
+  return "Hello 世界-b8"
 
-@app.route('/hithere')
+@server.route('/hithere')
 def hi_there_minna():
   return "/hithere hitto!"
 
@@ -135,10 +135,6 @@ api.add_resource(Subtract, "/subtract")
 api.add_resource(Multiply, "/multiply")
 api.add_resource(Divide, "/divide")
 
-# @app.route("/")
+# @server.route("/")
 # def hello():
 #   return "hola"
-
-if __name__ == "__main__":
-  # app.run(debug = True)
-  app.run(host='0.0.0.0', port=80)

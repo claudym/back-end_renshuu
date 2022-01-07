@@ -63,7 +63,9 @@ doc example:
             }
 }
 
-install: https://developer.fedoraproject.org/tech/database/mongodb/about.html
+install:
+https://developer.fedoraproject.org/tech/database/mongodb/about.html
+https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-20-04
 
 [Mongodb]
 name=MongoDB Repository
@@ -104,3 +106,150 @@ users.update_one({
 sentence= users.find({
    "username": username      
    })[0]["sentence"]
+
+<extra_1>[flask_gunicorn_nginx_docker]
+'tree':
+├── flask_app 
+│   ├── app.py          
+│   ├── wsgi.py
+│   ├── requirements.txt
+│   └── Dockerfile
+├── nginx
+│   ├── nginx.conf          
+│   ├── project.conf
+│   └── Dockerfile
+├── docker-compose.yml
+└── run_docker.sh
+
+'/flask_app/app.py':
+from flask import Flask
+
+server = Flask(__name__)
+
+@server.route('/')
+def hello_world():
+    return 'Ohayou seikai! Greetings!'
+
+'/flask_app/wsgi.py':
+from app import server
+
+if __name__ == "__main__":
+    server.run(host='0.0.0.0', port=5000)
+
+'/flask_app/requirements.txt':
+flask
+gunicorn
+
+'/flask_app/Dockerfile':
+FROM python:3.10.1
+
+WORKDIR /usr/src/flask_app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+
+'/nginx/nginx.conf':
+# Define the user that will own and run the Nginx server
+user  nginx;
+# Define the number of worker processes; recommended value is the number of
+# cores that are being used by your server
+worker_processes  2;
+# Define the location on the file system of the error log, plus the minimum
+# severity to log messages for
+error_log  /var/log/nginx/error.log warn;
+# Define the file that will store the process ID of the main NGINX process
+pid        /var/run/nginx.pid;
+
+# events block defines the parameters that affect connection processing.
+events {
+    # Define the maximum number of simultaneous connections that can be opened by a worker proce$
+    worker_connections  1024;
+}
+
+# http block defines the parameters for how NGINX should handle HTTP web traffic
+http {
+    # Include the file defining the list of file types that are supported by NGINX
+    include       /etc/nginx/mime.types;
+    # Define the default file type that is returned to the user
+    default_type  text/html;
+    # Define the format of log messages.
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+                          # Define the location of the log of access attempts to NGINX
+    access_log  /var/log/nginx/access.log  main;
+    # Define the parameters to optimize the delivery of static content
+    sendfile        on;
+    tcp_nopush     on;
+    tcp_nodelay    on;
+    # Define the timeout value for keep-alive connections with the client
+    keepalive_timeout  65;
+    # Define the usage of the gzip compression algorithm to reduce the amount of data to transmit
+    #gzip  on;
+    # Include additional parameters for virtual host(s)/server(s)
+    include /etc/nginx/conf.d/*.conf;
+}
+
+'/nginx/project.conf':
+server {
+
+    listen 80;
+    server_name docker_flask_gunicorn_nginx;
+
+    location / {
+        proxy_pass http://flask_app:5000;
+
+        # Do not change this
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /static {
+        rewrite ^/static(.*) /$1 break;
+        root /static;
+    }
+}
+
+'/nginx/Dockerfile':
+FROM nginx:1.21.4
+
+RUN rm /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx
+RUN rm /etc/nginx/conf.d/default.conf
+COPY project.conf /etc/nginx/conf.d/
+
+'/docker-compopse.yml':
+version: "3"
+
+services:
+  flask_app:
+    container_name: flask_app
+    restart: always
+    build: ./flask_app
+    ports:
+      - "5000:5000"
+    command: gunicorn -w 1 -b 0.0.0.0:8000 wsgi:server
+
+  nginx:
+    container_name: nginx
+    restart: always
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - flask_app
+
+'/run_docker.sh':
+echo killing old docker processes
+docker-compose rm -fs
+
+echo building docker containers
+docker-compose up --build -d
+
+'After the files are in place run':
+bash run_docker.sh
+
+
+<extra_2>[flask_gunicorn_nginx_docker with ssl]
+"How to obtain an SSL certificate, using Let's Encrypt, for a multi-container Docker web application"
