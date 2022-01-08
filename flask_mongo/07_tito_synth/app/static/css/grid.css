@@ -1,0 +1,48 @@
+body {
+  display: grid;
+  grid: autoflow min-content / 1fr;
+  grid-template-areas:
+    "header"
+    "nav"
+    "hero"
+    "main"
+    "footer";
+  margin: 1em;
+}
+header {
+  grid-area: header;
+}
+nav {
+  grid-area: nav;
+}
+main {
+  grid-area: main;
+  display: grid;
+  grid: auto-flow min-content / 1fr;
+  grid-template-areas:
+    "html"
+    "css"
+    "js"
+    "react";
+}
+footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+.hero {
+  grid-area: hero;
+}
+#hmtl {
+  grid-area: html;
+}
+#css {
+  grid-area: css;
+}
+#js {
+  grid-area: js;
+}
+#react {
+  grid-area: react;
+}
