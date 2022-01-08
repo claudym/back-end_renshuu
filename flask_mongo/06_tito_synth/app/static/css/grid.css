@@ -1,0 +1,44 @@
+body {
+  display: grid;
+  grid: autoflow min-content / 1fr;
+  grid-template-areas:
+    "header"
+    "nav"
+    "hero"
+    "main"
+    "footer";
+}
+header {
+  grid-area: header;
+}
+nav {
+  grid-area: nav;
+  display: grid;
+}
+main {
+  display: grid;
+  grid-area: main;
+  grid-template-areas:
+    "html"
+    "css"
+    "js";
+  gap: 0.5em;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  grid-area: footer;
+  justify-items: center;
+}
+.hero {
+  grid-area: hero;
+}
+#hmtl {
+  grid-area: html;
+}
+#css {
+  grid-area: css;
+}
+#js {
+  grid-area: js;
+}

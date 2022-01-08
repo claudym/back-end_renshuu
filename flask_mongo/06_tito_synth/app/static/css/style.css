@@ -1,0 +1,602 @@
+/* Text Adjust */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+/* Box Sizing */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+}
+/* Body rules */
+body {
+  font-family: "Lora", serif;
+  font-size: 16px;
+  font-weight: 400;
+  background-color: #ddd;
+}
+/* .hero {
+  position: relative;
+  width: 100vw;
+  height: 70vh;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url(images/hero.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  filter: brightness(60%);
+} */
+h2 {
+  text-align: center;
+  font-size: x-large;
+}
+
+h3 {
+  border-bottom: 2px solid #000;
+  text-align: end;
+  padding-right: 0.7em;
+}
+
+h4 {
+  font-size: large;
+  border-bottom: 1px dotted;
+}
+
+h5 {
+  font-size: large;
+}
+
+b {
+  font-weight: bold;
+}
+p,
+details {
+  font-family: "Kaisei HarunoUmi", sans-serif;
+}
+
+p,
+h4,
+h5,
+details {
+  padding: 0 0.7em;
+}
+summary {
+  /* border-bottom: 1px dotted #000; */
+  box-shadow: 0 0.5px 1px #000;
+  font-size: medium;
+  list-style: none;
+  background-color: rgb(212, 212, 212);
+}
+
+/* Header rules */
+header {
+  text-align: center;
+}
+
+/* Main rules */
+main li {
+  padding: 0 0.7em 0.3em 0;
+}
+
+/* Footer rules */
+footer {
+  font-size: large;
+}
+
+/* Nav rules */
+nav > ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  transition: 1.5s;
+}
+nav > ul > li {
+  font-family: "Kaisei HarunoUmi", sans-serif;
+}
+nav > ul > li > a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bolder;
+}
+nav > ul > li:hover {
+  font-size: larger;
+  transition-property: box-shadow, font-size;
+  transition-duration: 1s, 0.5s;
+  transition-delay: 0s, 0.3s;
+  transition-timing-function: ease-in, ease-in;
+}
+nav > ul > li:nth-child(1):hover {
+  box-shadow: inset 3.2em 0 rgba(241, 101, 41, 0.9);
+}
+nav > ul > li:nth-child(2):hover {
+  box-shadow: inset 2.1em 0 rgba(1, 101, 241, 0.8);
+}
+nav > ul > li:nth-child(3):hover {
+  box-shadow: inset 5.3em 0 rgb(247, 223, 30);
+}
+nav > ul > li:nth-child(4):hover {
+  box-shadow: inset 3em 0 rgba(97, 218, 251, 0.3);
+}
+
+/* HTML rules */
+
+#html > h2 {
+  margin-top: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(241, 101, 41, 1) 30%,
+    rgba(228, 77, 38, 1) 70%
+  );
+  color: #fff;
+  border-radius: 1px 1px 0 0;
+}
+
+.timeline {
+  display: none;
+}
+#htmlTimeline {
+  width: 100%;
+  height: 25vh;
+  background-image: url(/images/html_timeline.svg);
+  background-repeat: no-repeat;
+  /* border-bottom: 2px solid #000; */
+  box-shadow: 0 15px 15px 2px rgba(83, 80, 80, 0.33);
+}
+/* CSS rules */
+
+#css > h2 {
+  margin-top: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(38, 77, 228, 1) 30%,
+    rgba(41, 101, 241, 1) 70%
+  );
+  color: #fff;
+  border-radius: 1px 1px 0 0;
+}
+#css span {
+  border-bottom: 2px solid rgb(38, 77, 228);
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+caption {
+  background-color: rgba(38, 77, 228, 0.9);
+  font-weight: bold;
+  color: #fff;
+}
+th,
+td {
+  border-bottom: 1px solid #fff;
+}
+tbody > tr:hover,
+tfoot tr:hover {
+  background-color: rgba(41, 101, 241, 0.7);
+}
+/* Standard Box Model */
+.standardBox {
+  display: flex;
+  justify-content: center;
+}
+.standardBox > p {
+  box-sizing: content-box;
+  width: 300px;
+  height: 30px;
+  padding: 20px;
+  border: 3px solid #000;
+  text-align: center;
+}
+/* Alternative Box Model */
+.alternateBox {
+  display: flex;
+  justify-content: center;
+}
+.alternateBox > p {
+  width: 300px;
+  height: 30px;
+  padding: 20px;
+  border: 3px solid #000;
+  text-align: center;
+}
+/* Background Colors */
+.containerBackgroundColor {
+  display: flex;
+  justify-content: center;
+}
+#backgroundColorBox {
+  background-color: rgb(63, 0, 122);
+  width: 300px;
+  height: 80px;
+  margin: 10px;
+  padding: 0px 10px;
+  border: 3px solid #000;
+}
+#backgroundColorBox > h4 {
+  padding: 3px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+}
+/* Background Images */
+.containerBackgroundImage {
+  display: flex;
+  justify-content: center;
+}
+#backgroundImageBox {
+  width: 300px;
+  height: 200px;
+  border: 3px solid #000;
+  margin: 10px;
+  background: linear-gradient(
+        105deg,
+        rgba(255, 255, 255, 0.2) 10%,
+        rgba(51, 56, 57, 1) 98%
+      )
+      center center / 200px 200px no-repeat,
+    url(images/mandala.svg) center no-repeat, rgb(63, 0, 122);
+}
+/* Border Radius */
+.radiusBoxes {
+  display: grid;
+  gap: 0.7em;
+  margin: 0.7em;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+.boxRadius1,
+.boxRadius2,
+.boxRadius3,
+.boxRadius4,
+.boxRadius5,
+.boxRadius6 {
+  width: 300px;
+  height: 150px;
+  display: grid;
+  align-content: center;
+  background-color: rgba(63, 0, 122, 0.9);
+  color: #fff;
+  border: 3px solid #000;
+}
+.boxRadius1 {
+  border-radius: 10%;
+}
+.boxRadius2 {
+  border-radius: 25% 5%;
+}
+.boxRadius3 {
+  border-radius: 10% 20% 30% 50%;
+}
+.boxRadius4 {
+  border-radius: 10% / 50%;
+}
+.boxRadius5 {
+  border-radius: 5% 15% / 35%;
+}
+.boxRadius6 {
+  border-radius: 50% 20% / 10% 40%;
+}
+.radiusBoxes p {
+  text-align: center;
+}
+/* Box Shadow */
+.shadowBoxes {
+  display: grid;
+  gap: 2em;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+.boxShadow1,
+.boxShadow2,
+.boxShadow3,
+.boxShadow4,
+.boxShadow6 {
+  width: 200px;
+  height: 100px;
+  display: grid;
+  align-content: center;
+  background-color: rgba(63, 0, 122, 0.8);
+  color: #fff;
+  font-weight: bold;
+}
+.boxShadow1 {
+  box-shadow: 3em -1.5em rgb(0, 217, 255);
+}
+.boxShadow2 {
+  box-shadow: 1.5em 1em 0.7em rgba(0, 217, 255, 0.9);
+}
+.boxShadow3 {
+  box-shadow: 1.5em 0.7em 0.3em 0.6em rgba(0, 217, 255, 0.9);
+}
+.boxShadow4 {
+  box-shadow: inset 5em 1em rgba(60, 217, 255, 1);
+}
+.boxShadow5 {
+  width: 200px;
+  height: 130px;
+  display: grid;
+  align-content: center;
+  box-shadow: 0 0.75em 0 -0.375em #ddd, 0 -0.75em 0 -0.375em #ddd,
+    0.75em 0 0 -0.375em #ddd, -0.75em 0 0 -0.375em #ddd,
+    0 0 0 0.375em rgba(54, 48, 138, 1);
+}
+.boxShadow6 {
+  box-shadow: inset 0 0 0 1em #350561, inset 0 0 0 1.5em #4024dd,
+    inset 0 0 0 2em #77b2da;
+}
+/* Transformations */
+.containerTransformations {
+  display: grid;
+  gap: 3em;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 4em;
+}
+.boxTransformed1,
+.boxTransformed3,
+.boxTransformed5,
+.boxTransformed7,
+.boxTransformed9 {
+  width: 160px;
+  height: 160px;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  background-color: rgb(63, 0, 122);
+  cursor: wait;
+  border: 3px solid rgb(0, 217, 255);
+  border-radius: 30% 0;
+  color: #fff;
+  transition: 2s;
+}
+.boxTransformed2,
+.boxTransformed4,
+.boxTransformed6,
+.boxTransformed8,
+.boxTransformed10 {
+  width: 160px;
+  height: 160px;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  cursor: wait;
+  transform: rotate3d(1, 1, 1, 25deg);
+  transition: 2s;
+}
+.face {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: inherit;
+  font-weight: bold;
+}
+.front {
+  background: rgba(255, 0, 0, 0.7);
+  transform: translateZ(50px);
+}
+.back {
+  background: rgba(4, 0, 255, 0.7);
+  transform: rotateY(180deg) translateZ(40px);
+}
+.right {
+  background: rgba(251, 255, 0, 0.7);
+  transform: rotateY(90deg) translateZ(40px);
+}
+.left {
+  background: rgba(0, 255, 13, 0.7);
+  transform: rotateY(-90deg) translateZ(40px);
+}
+.top {
+  background: rgba(52, 232, 238, 0.7);
+  transform: rotateX(90deg) translateZ(40px);
+}
+.bottom {
+  background: rgba(227, 55, 243, 0.7);
+  transform: rotateX(-90deg) translateZ(40px);
+}
+.boxTransformed1:hover {
+  transform: matrix(2, 0.2, 2, 1, 5, 6);
+}
+.boxTransformed2:hover {
+  transform: rotate3d(1, 1, 1, 25deg)
+    matrix3d(1, 0, 0, 0, 0, 1, 6, 0, 0, 0, 1, 0, 50, 100, 0, 1.1);
+}
+.boxTransformed3:hover {
+  transform: translate(50px, 70px);
+}
+.boxTransformed4:hover {
+  transform: rotate3d(1, 1, 1, 25deg) translate3d(50px, 70px, 100px);
+}
+.boxTransformed5:hover {
+  transform: scale(2, 2);
+}
+.boxTransformed6:hover {
+  transform: rotate3d(1, 1, 1, 25deg) scale3d(2, 2, 2);
+}
+.boxTransformed7:hover {
+  transform: rotate(90deg);
+}
+.boxTransformed8:hover {
+  transform: rotate3d(2, -1, 1, 90deg);
+}
+.boxTransformed9:hover {
+  transform: skew(45deg, 25deg);
+}
+.boxTransformed10:hover {
+  transform: rotate3d(1, 1, 1, 25deg) perspective(6cm);
+}
+/* Transition between states */
+.containerTransitions {
+  display: grid;
+  gap: 1em;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 3em;
+}
+
+.boxTransitioned1,
+.boxTransitioned2,
+.boxTransitioned3,
+.boxTransitioned4,
+.boxTransitioned5,
+.boxTransitioned6 {
+  width: 160px;
+  height: 160px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-color: rgb(63, 0, 122);
+  border: 3px solid rgb(0, 217, 255);
+  cursor: wait;
+  color: #ddd;
+  font-weight: bold;
+}
+.boxTransitioned1:hover {
+  border-radius: 50%;
+  transition: border-radius 3s;
+}
+.boxTransitioned2:hover {
+  border-radius: 50%;
+  transition: border-radius 3s 1.5s;
+}
+.boxTransitioned3:hover {
+  border-radius: 50%;
+  transition: border-radius 3s cubic-bezier(0.6, 1.2, 1, -0.8);
+}
+.boxTransitioned4:hover {
+  border-radius: 50%;
+  transition: border-radius 3s ease-in-out 1.5s;
+}
+.boxTransitioned5:hover {
+  transition: border-radius 3s, transform 2s 1.5s, box-shadow 1.5s 1s ease-in;
+  border-radius: 50%;
+  transform: translateX(5em);
+  box-shadow: -2em 0 3em rgb(0, 217, 255);
+}
+.boxTransitioned6:hover {
+  border: none;
+  border-radius: 30% 0;
+  background-color: rgb(0, 217, 255);
+  color: #000;
+  transform: skew(20deg, 15deg) translateX(5em);
+  box-shadow: -2.3em 0 3em rgba(63, 0, 122, 0.7);
+  transition-property: background-color, color, border-radius, border, transform,
+    box-shadow;
+  transition-duration: 1s, 1s, 1s, 0.5s, 3s, 2s;
+  transition-delay: 0s, 0s, 1s, 1s, 1.5s, 2s;
+  transition-timing-function: ease-in, ease-in-out, ease-out, linear, ease-in,
+    ease-out;
+}
+.animatedBoxSpace {
+  display: grid;
+  align-content: end;
+  justify-content: left;
+  width: 100%;
+  height: 200px;
+}
+.animatedBox {
+  display: flex;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.animation1,
+.animation2,
+.animation3 {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+.animation1 {
+  background-color: rgba(184, 0, 0, 0.829);
+  transform: rotate(27.5deg);
+  border-radius: 0 30%;
+}
+.animation2 {
+  background-color: rgba(0, 102, 5, 0.733);
+  border-radius: 30% 0;
+  transform: rotate(67.5deg);
+}
+.animation3 {
+  background-color: rgba(197, 194, 0, 0.664);
+  border-radius: 30% 0;
+}
+.animation4 {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: rgba(97, 0, 223, 0.897);
+  border-radius: 50%;
+}
+.animatedBox.run {
+  animation-name: spin, slide;
+  animation-duration: 6s, 3s;
+  animation-delay: 0s, 3s;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out, ease-out;
+  animation-iteration-count: 2;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(12turn);
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translate(0, 0) rotate(0turn);
+  }
+  to {
+    transform: translate(60vw, -8vh) rotate(6turn);
+  }
+}
+/* JavaScript rules */
+
+#js > h2 {
+  margin-top: 0;
+  background: rgb(247, 223, 30);
+  border-radius: 1px 1px 0 0;
+}
+
+#js span {
+  border-bottom: 2px solid rgb(247, 223, 30);
+}
+#devil {
+  font-size: 1.5em;
+  border: none !important;
+}
+
+/* React rules */
+#react > h2 {
+  margin-top: 0;
+  background: rgb(97, 218, 251);
+}

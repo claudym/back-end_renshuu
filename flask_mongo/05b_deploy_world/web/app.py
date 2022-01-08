@@ -3,8 +3,8 @@ from flask_restful import Api, Resource
 from pymongo import MongoClient
 import bcrypt
 
-app= Flask(__name__)
-api= Api(app)
+server= Flask(__name__)
+api= Api(server)
 
 client= MongoClient("mongodb://db:27017")
 db= client.SentencesDatabase
@@ -137,5 +137,3 @@ api.add_resource(Register, '/register')
 api.add_resource(Store, '/store')
 api.add_resource(Retrieve, '/retrieve')
 
-if __name__== "__main__":
-  app.run(host="0.0.0.0")

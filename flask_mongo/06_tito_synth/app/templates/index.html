@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/grid.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+  <title>Web Development Synthesis</title>
+</head>
+
+<body>
+  <header>
+    <h1>Web Development Synthesis</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#html"><img src="{{ url_for('static', filename='images/html_logo.svg') }}" alt="html logo" width="30" height="30">HTML</a></li>
+      <!-- color info: #e44d26 rgb(228, 77, 38) and #f16529 (241, 101, 41) -->
+      <li><a href="#css"><img src="{{ url_for('static', filename='images/css_logo.svg') }}" alt="css logo" width="30" height="30">CSS</a></li>
+      <!-- color info: #264de4 rgb(38, 77, 228) and #2965f1 (41, 101, 241)-->
+      <li><a href="#js"><img src="{{ url_for('static', filename='images/js_logo.svg') }}" alt="javascript logo" width="30" height="30"> JavaScript</a>
+      </li>
+      <!-- color info: #f7df1e rgb(247, 223, 30) -->
+      <li><a href="#react"><img src="{{ url_for('static', filename='/images/react_logo.svg') }}" alt="react logo" width="27" height="27">React</a></li>
+    </ul>
+  </nav>
+  <div class="hero">
+  </div>
+  <main>
+    <article id="html">
+      <h2>HTML</h2>
+      <h3>What is HTML?</h3>
+      <p>The HyperText Markup Language is the most basic building block of the Web. It defines the meaning and
+        structure of web content.</p>
+      <p>Web browsers receive HTML documents from a web server or from local storage and render the documents into
+        multimedia web pages.</p>
+      <p>HTML elements are the building blocks of HTML pages. With HTML constructs, images and other objects such as
+        interactive forms may be embedded into the rendered page. HTML provides a means to create structured documents
+        by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items.
+        HTML elements are delineated by tags, written using angle brackets. Tags such as &lt;img /&gt; and &lt;input
+        /&gt; directly introduce content into the page. Other tags such as &lt;p&gt; surround and provide information
+        about document text and may include other tags as sub-elements. Browsers do not display the HTML tags, but use
+        them to interpret the content of the page.</p>
+      <h3>Element Display Roles</h3>
+      <ul>
+        <li><b>Block-Level:</b> element box fills its parent element's content area width and cannot have other
+          elements to its sides. Example: &lt;p&gt; and &lt;div&gt;.</li>
+        <li><b>Inline-Level:</b> element box is generated within a line of text and does not break up the flow of
+          that line. Example: &lt;a&gt; and &lt;span&gt;.</li>
+      </ul>
+      <div class="timeline">
+        <h3>History of HTML</h3>
+        <div class="containerTimeline">
+          <div id="htmlTimeline">
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article id="css">
+      <h2>CSS</h2>
+      <h3>What is CSS?</h3>
+      <p>CSS is a style sheet language used for describing the presentation of a document written in a markup language
+        such as HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.</p>
+      <p>CSS is designed to enable the separation of presentation and content, including layout, colors, and fonts.
+        This separation can improve content accessibility, provide more flexibility and control in the specification
+        of presentation characteristics, enable multiple web pages to share formatting by specifying the relecant CSS
+        in a separate .css file which reduces complexity and repetition in the structural content as well as enabling
+        the .css file to be cached to improve the page load speed between the pages that share the file.</p>
+      <p>The name cascading comes from the specified priority scheme to determine which style rule applies if more
+        than one rule matches a particular element. This cascading priority scheme is predictable.</p>
+      <p>The CSS specifications are maintained by the World Wide Web Consortium (W3C).</p>
+      <h3>Selectors</h3>
+      <details>
+        <summary>Basic selectors</summary>
+        <ul>
+          <li>Universal selector: *</li>
+          <li>Type selector: <i>elementname</i></li>
+          <li>Class selector: <i>.classname</i></li>
+          <li>ID selector: <i>#idname</i></li>
+          <li>Attribute selector: [<i>attr=value</i>]</li>
+        </ul>
+      </details>
+      <h4>Grouping selectors</h4>
+      <details>
+        <summary>Selector list <b>A, B</b></summary>
+        Specifies that both <i>A</i> and <i>B</i> elements are selected.
+      </details>
+      <details>
+        <summary>Adjacent sibling combinator <b>A + B</b></summary>
+        Specifies that the elements selected by both <i>A</i> and <i>B</i> have the same parent and that the element
+        selected by <i>B</i> immediately follows the element selected by <i>A</i> horizontally.
+      </details>
+      <details>
+        <summary>General sibling combinator <b>A ~ B</b></summary>
+        Specifies that the elements selected by both <i>A</i> and <i>B</i> share the same parent and that the element
+        selected by <i>A</i> comes before⎼but not necessarily immediately before⎼the element selected by <i>B</i>.
+      </details>
+      <details>
+        <summary>Child combinator <b>A > B</b></summary>
+        Specifies that the element selected by <i>B</i> is the direct child of the element selected by <i>A</i>.
+      </details>
+      <details>
+        <summary>Descendant combinator <b>A B</b></summary>
+        Specifies that the element selected by <i>B</i> is a descendant of the element selected by <i>A</i>, but is
+        not
+        necessarily a direct child.
+      </details>
+      <details>
+        <summary>Pseudo classes <b>:</b></summary>
+        Specifies a special state of the selected element(s).
+      </details>
+      <details>
+        <summary>Pseudo elements <b>::</b></summary>
+        Represents entities that are not included in HTML.
+      </details>
+      <h3 id="precedence">Style Precedence</h3>
+      <p>Cascading Style Sheets uses a mechanism called the <i>cascade</i> to resolve any conflicts between styles
+        and arrive at a final set of styles to be applied to the document. Two key components of the cascade are
+        specificity and inheritance.</p>
+      <h4>Specificity</h4>
+      <p><i>Specificity</i> describes the weight of a selector and any declarations associated with it.</p>
+      <table id="specificityTable">
+        <caption>Selector type specificity</caption>
+        <thead>
+          <tr>
+            <th>Selector type</th>
+            <th>Example</th>
+            <th>Specificity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Universal selector</td>
+            <td style="text-align: center;">*</td>
+            <td style="text-align: right;">0,0,0,0</td>
+          </tr>
+          <tr>
+            <td>Combinator</td>
+            <td style="text-align: center;">+</td>
+            <td style="text-align: right;">0,0,0,0</td>
+          </tr>
+          <tr>
+            <td>Element identifier</td>
+            <td style="text-align: center;">div</td>
+            <td style="text-align: right;">0,0,0,1</td>
+          </tr>
+          <tr>
+            <td>Pseudo-element identifier</td>
+            <td style="text-align: center;">::first-line</td>
+            <td style="text-align: right;">0,0,0,1</td>
+          </tr>
+          <tr>
+            <td>Class identifier</td>
+            <td style="text-align: center;">.warning</td>
+            <td style="text-align: right;">0,0,1,0</td>
+          </tr>
+          <tr>
+            <td>Pseudo-class identifier</td>
+            <td style="text-align: center;">:hover</td>
+            <td style="text-align: right;">0,0,1,0</td>
+          </tr>
+          <tr>
+            <td>Attribute identifier</td>
+            <td style="text-align: center;">[type="checkbox"]</td>
+            <td style="text-align: right;">0,0,1,0</td>
+          </tr>
+          <tr>
+            <td>ID identifier</td>
+            <td style="text-align: center;">#content</td>
+            <td style="text-align: right;">0,1,0,0</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Inline <em>style</em> attribute</td>
+            <td style="text-align: center;">style="color: red;"</td>
+            <td style="text-align: right;">1,0,0,0</td>
+          </tr>
+        </tfoot>
+      </table>
+      <h4>Inheritance</h4>
+      <p>CSS uses the document tree for the mechanism of <i>inheritance</i>, in which a style applied to an element is
+        inherited by its descendants. Inheritance is interrupted only by a conflicting style rule that applies
+        directly
+        to an element. Inherited values have no specificity at all (which is <i>not</i> the same as having zero
+        specificity).</p>
+      <h3 id="boxModel">The Box Model</h3>
+      <p>In CSS there are broadly two types of boxes— <b>block boxes</b> and <b>inline boxes</b>. The CSS box model as
+        a
+        whole applies to block boxes. Inline boxes use just some of the behavior defined in the box model. The model
+        defines how the different parts of a box—margin, border, padding, and content— work together to create a box
+        that you can see on a page.</p>
+      <h4>Standard CSS box model</h4>
+      <p>In the standard box model, if you give a box a <i>width</i> and a <i>height</i> attribute, this defines the
+        width and height of the <i>content box</i>. Any padding and border is then added to that width and height to
+        get
+        the total size taken up by the box. Example:</p>
+      <div class="standardBox">
+        <p>Standard CSS Box Model</p>
+      </div>
+      <p>The <i>actual space</i> taken up by the box will be 350px wide (300px + 20px + 20px + 5px + 5px) and 80px
+        high
+        (30px + 20px + 20px + 5px + 5px).</p>
+      <h4>Alternativve CSS box model</h4>
+      <p>In this model, any width is the width of the visible box on the page, therefore the content area width is
+        that
+        width minus the width for the padding and border. Example using same width and height than previous
+        case:
+      </p>
+      <div class="alternateBox">
+        <p>Alternative CSS Box Model</p>
+      </div>
+      <p>By default, browsers use the standard box model. If you want to turn on the alternative model for an element,
+        you do so by setting <i>box-sizing: border-box;</i> on it.</p>
+      <h3>Backgrounds</h3>
+      <p>The <i>background-color</i> property defines the background color of any element in CSS. The property accepts
+        any valid &lt;color&gt;. A <i>background-color</i> extends underneath the content and padding box of the
+        element. Example:</p>
+      <div class="containerBackgroundColor">
+        <div id="backgroundColorBox">
+          <h4>Background Colors</h4>
+        </div>
+      </div>
+      <p>The <i>background-image</i> property enables the display of an image in the background of an element. Also,
+        if
+        you specify a background color in addition to a background image then the image displays on top of the color.
+        Example:</p>
+      <div class="containerBackgroundImage">
+        <div id="backgroundImageBox">
+        </div>
+      </div>
+      <h3>Rounded Corners</h3>
+      <p>Rounding corners on a box is achieved by using the <i>border-radius</i> property. You can set a single radius
+        to make circular corners, or two radii to make elliptical corners. The radius applies to the whole background,
+        even if the element has no border. Examples:</p>
+      <div class="radiusBoxes">
+        <div class="boxRadius1">
+          <p>
+            Radius is set for all 4 sides
+          </p>
+          <p>border-radius: 10%;</p>
+        </div>
+        <div class="boxRadius2">
+          <p>
+            top-left-and-bottom-right | top-right-and-bottom-left
+          </p>
+          <p>border-radius: 25% 5%;</p>
+        </div>
+        <div class="boxRadius3">
+          <p>
+            top-left | top-right | bottom-right | bottom_left
+          </p>
+          <p>border-radius: 10% 20% 30% 50%;</p>
+        </div>
+        <div class="boxRadius4">
+          <p>
+            Horizontal all 4 corners / Vertical all 4 corners
+          </p>
+          <p>border-radius: 10% / 50%;</p>
+        </div>
+        <div class="boxRadius5">
+          <p>
+            top-left-and-bottom-right | top-right-and-bottom-left / all 4 corners
+          </p>
+          <p>border-radius: 5% 15% / 35%;</p>
+        </div>
+        <div class="boxRadius6">
+          <p>
+            top-left-and-bottom-right | top-right-and-bottom-left / top-left-and-bottom-right |
+            top-right-and-bottom-left
+          </p>
+          <p>border-radius: 50% 20% / 10% 40%;</p>
+        </div>
+      </div>
+      <h3>Box Shadow</h3>
+      <p>The <i>box-shadow</i> property adds shadow effects around an element's frame. You can set multiple effects
+        separated by commas. A box shadow is described by X and Y offsets relative to the element, blur and spread
+        radius, and color.</p>
+      <p>The <i>box-shadow</i> property enables you to cast a drop shadow from the frame of almost any element. If a
+        <i>border-radius</i> is specified on the element with a box shadow, the box shadow takes on the same rounded
+        corners.
+      </p>
+      <p>Values:</p>
+      <details>
+        <summary><b>inset</b></summary>
+        If not specified (default), the shadow is assumed to be a drop shadow (as if the box were raised above the
+        content). The presence of the <i>inset</i> keyword changes the shadow to one inside the frame (as if the
+        content
+        was depressed inside the box). Inset shadows are drawn inside the border (even transparent ones), above the
+        background, but below content.
+      </details>
+      <details>
+        <summary><b>&lt;offset-x&gt; &lt;offset-y&gt;</b></summary>
+        These are two &lt;length&gt; values to set the shadow offset. &lt;offset-x&gt; specifies the horizontal
+        distance. Negative values place the shadow to the left of the element. &lt;offset-y&gt; specifies the vertical
+        distance. Negative values place the shadow above the element. If both values values are 0, the shadow is
+        placed
+        behind the element (and may generate a blur effect if &lt;blur-radius&gt; and/or &lt;spread-radius&gt; is
+        set).
+      </details>
+      <details>
+        <summary><b>&lt;blur-radius&gt;</b></summary>
+        This is a third &lt;length&gt; value. The larger this value, the bigger the blur, so the shadow becomes bigger
+        and lighter. Negative values are not allowed. If not specified, it will be 0 (the shadow's edge is sharp).
+      </details>
+      <details>
+        <summary><b>&lt;spread-radius&gt;</b></summary>
+        This is a fourth &lt;length&gt; value. Positive values will cause the shadow to expand and grow bigger,
+        negative
+        values will cause the shadow to shrink. If not specified, it will be 0 (the shadow will be the same size as
+        the
+        element).
+      </details>
+      <p>Examples:</p>
+      <div class="shadowBoxes">
+        <div class="boxShadow1">
+          <p>box-shadow: 3em -1.5em rgba(94, 48, 138, 1);</p>
+        </div>
+        <div class="boxShadow2">
+          <p>box-shadow: 1.5em 1em 0.7em rgba(94, 48, 138, 0.9);</p>
+        </div>
+        <div class="boxShadow3">
+          <p>box-shadow: 1.5em 0.7em 0.3em 0.6em rgba(94, 48, 138, 0.9);</p>
+        </div>
+        <div class="boxShadow4">
+          <p>box-shadow: inset 5em 1em rgba(94, 48, 138, 1);</p>
+        </div>
+        <div class="boxShadow5">
+          <p> box-shadow: 0 0.75em 0 -0.375em #ddd, 0 -0.75em 0 -0.375em #ddd, 0.75em 0 0 -0.375em #ddd, -0.75em 0 0
+            -0.375em #ddd, 0 0 0 0.375em rgba(94, 48, 138, 1);</p>
+        </div>
+        <div class="boxShadow6">
+          <p>box-shadow: inset 0 0 0 1em #350561, inset 0 0 0 1.5em #4024dd, inset 0 0 0 2em #77b2da;</p>
+        </div>
+      </div>
+      <h3>Transforming Elements</h3>
+      <p>The <i>transform</i> property lets you rotate, scale, skew, or translate an element. It modifies coordinate
+        space of the CSS visual formatting model.</p>
+      <ul>
+        <li><span>matrix(<i>n,n,n,n,n,n</i>)</span>: Defines a 2D transformation, using a matrix of six values.</li>
+        <li><span>matrix3d(<i>n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n</i>)</span>: Defines a 3D transformation, using a 4x4
+          matrix of 16
+          values.</li>
+        <li><span>translate(<i>x,y</i>)</span>: Defines a 2D translation.</li>
+        <li><span>translate(<i>x,y,z</i>)</span>: Defines a 3D translation.</li>
+        <li><span>scale(<i>x,y</i>)</span>: Defines a 2D scale transformation.</li>
+        <li><span>scale3d(<i>x,y,z</i>)</span>: Defines a 3D scale transformation.</li>
+        <li><span>rotate(<i>angle</i>)</span>: Defines a 2D rotation, the angle is specified in the parameter.</li>
+        <li><span>rotate3d(<i>x,y,z,angle</i>)</span>: Defines a 3D rotation.</li>
+        <li><span>skew(<i>x-angle,y-angle</i>)</span>: Defines a 2D skew transformation along the X- and the Y-axis.
+        </li>
+        <li><span>perspective(<i>n</i>)</span>: Defines a perspective view for a 3D transformed element.</li>
+      </ul>
+      <p>Examples:</p>
+      <div class="containerTransformations">
+        <div class="boxTransformed1">
+          <p>matrix()</p>
+        </div>
+        <div class="boxTransformed2">
+          <div class="face front">matrix3d()</div>
+          <div class="face back">2</div>
+          <div class="face right">3</div>
+          <div class="face left">4</div>
+          <div class="face top">5</div>
+          <div class="face bottom">6</div>
+        </div>
+        <div class="boxTransformed3">
+          <p>translate()</p>
+        </div>
+        <div class="boxTransformed4">
+          <div class="face front">translate3d()</div>
+          <div class="face back">2</div>
+          <div class="face right">3</div>
+          <div class="face left">4</div>
+          <div class="face top">5</div>
+          <div class="face bottom">6</div>
+        </div>
+        <div class="boxTransformed5">
+          <p>scale()</p>
+        </div>
+        <div class="boxTransformed6">
+          <div class="face front">scale3d()</div>
+          <div class="face back">2</div>
+          <div class="face right">3</div>
+          <div class="face left">4</div>
+          <div class="face top">5</div>
+          <div class="face bottom">6</div>
+        </div>
+        <div class="boxTransformed7">
+          <p>rotate()</p>
+        </div>
+        <div class="boxTransformed8">
+          <div class="face front">rotate3d()</div>
+          <div class="face back">2</div>
+          <div class="face right">3</div>
+          <div class="face left">4</div>
+          <div class="face top">5</div>
+          <div class="face bottom">6</div>
+        </div>
+        <div class="boxTransformed9">
+          <p>skew()</p>
+        </div>
+        <div class="boxTransformed10">
+          <div class="face front">perspective()</div>
+          <div class="face back">2</div>
+          <div class="face right">3</div>
+          <div class="face left">4</div>
+          <div class="face top">5</div>
+          <div class="face bottom">6</div>
+        </div>
+      </div>
+      <h3>Transitioning Between States</h3>
+      <p>The <i>transition</i> CSS property is a shorthand property for <i>transition-property</i>,
+        <i>transition-duration</i>,
+        <i>transition-timing-function</i> and <i>transition-delay</i>.
+      </p>
+      <p>Transitions enable you to define the transition between two states of an element. Different states may be
+        defined using <i>pseudo-classes</i> like <i>:hover</i> or <i>:active</i> or dynamically set using JavaScript.
+      </p>
+      <h4>Constituent Properties</h4>
+      <ul>
+        <li><i>transition-delay</i>: specifies the duration to wait starting a property's transition effect when its
+          value changes. The delay may be zero, positive or negative:
+          <ul>
+            <li>A value of 0s will begin the transition immediately.</li>
+            <li>A positive value will delay the start of the transition effect for the given length of time.</li>
+            <li>A negative value will begin the transition effect immediately, and partway through the effect. In other
+              words, the effect will be animated as if it had already been running for the given length of time.</li>
+          </ul>
+        </li>
+        <li><i>transition-duration</i>: sets the length of time a transition animation should take to complete. By
+          default, the value is 0s, meaning that no animation will occur.</li>
+        <li><i>transition-property</i>: sets the CSS properties to which a transition effect should be applied.</li>
+        <li><i>transition-timing-function</i>: sets how intermediate values are calculated for CSS properties being
+          affected by a transition effect. This, in essence, lets you establish an acceleration curve so that the speed
+          of the transition can vary over its duration. This acceleration curve is defined using one
+          &lt;easing-function&gt; for each property to be transitioned.</li>
+      </ul>
+      <div class="containerTransitions">
+        <div class="boxTransitioned1">
+          property name | duration
+        </div>
+        <div class="boxTransitioned2">
+          property name | duration | delay
+        </div>
+        <div class="boxTransitioned3">
+          property name | duration | timing-function
+        </div>
+        <div class="boxTransitioned4">
+          property name | duration | timing-function | delay
+        </div>
+        <div class="boxTransitioned5">
+          apply several properties
+        </div>
+        <div class="boxTransitioned6">
+          longhand properties
+        </div>
+      </div>
+      <h3>Animations</h3>
+      <p><b>CSS Animations</b> make it possible to animate transitions from one CSS style
+        configuration to another.
+        Animations consists of two components, a style describing the CSS animation and a set of keyframes that indicate
+        the start (sometimes intermediate waypoints) and end states of the animation's style.</p>
+      <p>To create a CSS animation sequence, you style the element you want to animate with the <i>animation</i>
+        property or its sub-properties. This lets you configure the timing, duration, and other details of how the
+        animation sequence should progress. This does <b>not</b> configure the actual
+        appearance of the animation, which
+        is done using <i>@keyframes</i> at-rule.</p>
+      <p>The sub-properties of the animation property are:</p>
+      <ul>
+        <li><i>animation-name</i>: specifies the name of the @keyframes at-rule describing the animation's keyframes.
+        </li>
+        <li><i>animation-duration</i>: configures the length of time an animation should take to complete one cycle.
+        </li>
+        <li><i>animation-timing-function</i>: configures the timing of the animation; that is, how the animation
+          transitions through keyframes, by establishing acceleration curves.</li>
+        <li><i>animation-delay</i>: configures the delay between the time the element is loaded and the beginning of the
+          animation sequence.</li>
+        <li><i>animation-iteration-count</i>: configures the number of times the animation should repeat; you can
+          specify infinite to repeat the animation indefinitely.</li>
+        <li><i>animation-direction</i>: configures whether or not the animation should alternate direction on each run
+          through the sequence or reset to the start point and repeat itself.</li>
+        <li><i>animation-fill-mode</i>: configures what values are applied by the animation before and after executing.
+        </li>
+        <li><i>animation-play-state</i>: lets you pause and resume the animation sequence.</li>
+      </ul>
+      <h4>Example animation:</h4>
+      <div class="animatedBoxSpace">
+        <div class="animatedBox">
+          <div class="animation1"></div>
+          <div class="animation2"></div>
+          <div class="animation3"></div>
+          <div class="animation4"></div>
+        </div>
+      </div>
+    </article>
+
+    <article id="js">
+      <h2>JavaScript</h2>
+      <h3>What is JavaScript?</h3>
+      <p>JavaScript was introduced in 1995 as a way to add programs to web pages in the Netscape Navigator browser. The
+        language has since been adopted by all other major graphical web browsers. It has made modern web applications
+        possible—applications with which you can interact directly without doing a page reload for every action.
+        JavaScript is also used in more traditional websites to provide various forms of interactivity and cleverness.
+      </p>
+      <p>JavaScript(JS) is a lightweight, interpreted, or just-in-time compiled programming language with
+        first-class-functions. JavaScript is a prototype-based, multi-paradigm, single-threaded, dynamic language,
+        supporting object-oriented, imperative, and declarative (e.g. functional programming) styles.</p>
+      <h3>Grammar, Values and Types</h3>
+      <p>JavaScript is <b>case-sensitive</b> and uses the Unicode character set.</p>
+      <p>An <i>expression</i> in JavaScript is any valid unit of code that resolves to a value. Every syntactically
+        valid expression resolves to some value but conceptually, there are two types of expressions: with side
+        effects(those that assign value to a variable) and those that in some sense evaluate and therefore resolve to a
+        value.</p>
+      <p>In JavaScript, instructions are called statements and are separated by semicolons <b>(;)</b>. Which means that
+        any
+        JavaScript expression ending with a semicolon is also a statement.</p>
+      <p>The source code text of JavaScript gets scanned from left to right, and is converted into a sequence of input
+        elements which are <i>tokens</i>, <i>control characters</i>, <i>line-terminators</i>, <i>comments</i>, or
+        whitespace.</p>
+      <p>In JavaScript values are chunks of information that represent pieces of information. Every value has a type
+        that determines its role. There are eight data types, 7 primitive data types and objects.</p>
+      <h4>The 7 primitive data types:</h4>
+      <ol>
+        <li><b>Number: </b>Floating point numbers. Used for decimals and integers.</li>
+        <li><b>String: </b> Sequence of characters. Used for text.</li>
+        <li><b>Boolean: </b>Logical type that can only be <i>true</i> or <i>false</i>. Used for taking decisions.</li>
+        <li><b>Undefined: </b>Value taken by a variable that is not yet defined ('empty value').</li>
+        <li><b>Null: </b>Also means 'empty value'.</li>
+        <li><b>Symbol(ES2015): </b>Value that is unique and cannot be changed.</li>
+        <li><b>BigInt(ES2020): </b>Larger integers than the Number type can hold.</li>
+      </ol>
+      <h4>Data type conversion</h4>
+      <p>JavaScript is a <i>dynamically typed</i> language. This means you don't have to specify the data type of a
+        variable when you declare it. It also means that data types are automatically converted as-needed during script
+        execution.</p>
+      <h4>Declarations</h4>
+      <p>JavaScript has three kinds of variable declarations.</p>
+      <ul>
+        <li><b>var</b>: declares a variable, optionally initializing it to a value.</li>
+        <li><b>let</b>: declares a block-scoped, local variable, optionally initializing it to a value.</li>
+        <li><b>const</b>: declares a block-scoped, read-only named constant.</li>
+      </ul>
+      <p>Variables are used as symbolic names for values in the programs. The names of variables, called identifiers,
+        conform to certain rules.</p>
+      <h5>Variable Scope</h5>
+      <p>When you declare a variable outside of any function, it is called a <i>global</i> variable, because it is
+        available to any other code in the current document. When you declare a variable within a function, it is called
+        a local variable, because it is available only within that function.</p>
+      <h5>Variable hoisting</h5>
+      <p>You can refer to a variable declared later, without getting an exception. This concept is knows as
+        <b>hoisting</b>. Variables in JavaScript are "hoisted" (or "lifted") to the top of the function or statement.
+        However, variables that are hoisted return a value of <i>undefined</i>.
+      </p>
+      <h4>Literals</h4>
+      <p><i>Literals</i> represent values in JavaScript. These are fixed values—not variables—that you <i>literally</i>
+        provide in your script. There are:</p>
+      <ul>
+        <li>Array literal: a list of zero or more expressions, each of which represents an array element, enclosed in
+          square brackets ([]).</li>
+        <li>Boolean literal: <b>true</b> and <b>false</b>.</li>
+        <li>Floating-point literals: can have an unsigned decimal integer, a decimal point (.), a fraction, or an
+          exponent(e).</li>
+        <li>Numeric literal: include integer literals in different bases as well as floating-point literals in base-10.
+        </li>
+        <li>Object literal: is a list of zero or more pairs of property names and associated values of an object,
+          enclosed in curly braces ({}).</li>
+        <li>RegExp literal: is a pattern enclosed between slashes (/ /).</li>
+        <li>String literal: is zero or more characters enclosed in double(") or single (') quotation marks. A string
+          must be delimited by quotations marks of the same type. Also there are <i>template literals</i> which are
+          enclosed by the back-tick <b>(` ` )</b> characters instead of double or single quotes and provide syntactic
+          sugar
+          for
+          constructing strings.</li>
+      </ul>
+      <h3>Operators</h3>
+      <p>JavaScript has the following types of operators:</p>
+      <ul>
+        <li> <span>Assignment</span>: assigns a value to its left operand based on the value of its right operand. The
+          simple
+          assignmet operator
+          is equal <b>(=)</b>.</li>
+        <li><span>Comparison</span>: compares its operands and returns a logical value based on whether the comparison
+          is true. The
+          operands can be numerical, string, logical, or object values.
+          <ul>
+            <li>Equal <b>(==)</b></li>
+            <li>Not equal <b>(!=)</b></li>
+            <li>Strict equal <b>(===)</b></li>
+            <li>Strict not equal <b>(!==)</b></li>
+            <li>Greater than <b>(&gt;)</b></li>
+            <li>Greater than or equal <b>(&gt;=)</b></li>
+            <li>Less than <b>(&lt;)</b> </li>
+            <li>Less than or equal <b>(&lt;=)</b> </li>
+          </ul>
+        </li>
+        <li><span>Arithmetic</span>: takes numerical values (either literals or variables) as their operands and returns
+          a single
+          numerical value. The standard arithmetic operators are addition <b>(+)</b> , subtraction <b>(-)</b> ,
+          multiplication <b>(*)</b>, and
+          division <b>(/)</b>. In addition there are also:
+          <ul>
+            <li>Remainder <b>(%)</b> : binary operator that returns the integer remainder of dividing the two operands.
+            </li>
+            <li>Increment <b>(++)</b> : unary operator that adds one to its operand.</li>
+            <li>Decrement <b>(--)</b> : unary operator that subtracts one from its operand.</li>
+            <li>Unary negation <b>(-)</b> : unary operator that returns the negation of its operand.</li>
+            <li>Unary plus <b>(+)</b> : unary operator that attempts to convert operand to a number, if it is not
+              already.</li>
+            <li>Exponentiation operator <b>(**)</b> : calculates the base to the exponent power, that is, base^exponent.
+            </li>
+          </ul>
+        </li>
+        <li><span>Bitwise operator</span>: treats their operands as a set of 32 bits (zeros and ones), rather than as
+          decimal,
+          hexadecimal, or
+          octal numbers. Bitwise operators perform their operations on such <b>binary representations</b>, but they
+          return standard JavaScript numerical values.</li>
+        <li><span>Logical operators</span>: are typically used with Boolean (logical) values; when they are, they return
+          a Boolean
+          value.
+          However, the <b>&&</b> and <b>||</b> operators actually return the value of one of the specified operands, so
+          if these operators are used with non-Boolean values, they may return a non-Boolean value.
+          <ul>
+            <li>Logical AND <b>(&&)</b>: Returns left-hand operand if it can be converted to false; otherwise returns
+              right-hand operand. Thus, when used with Boolean values, returns <i>true</i> if both operands are true;
+              otherwise, returns <i>false</i>.</li>
+            <li>Logical OR <b>(||)</b>: Returns left-hand operand if it can be converted to true; otherwise, returns
+              right-hand operand. Thus, when used with Boolean values, returns <i>true</i> if either operand is true; if
+              both are false returns <i>false</i>.</li>
+            <li>Logical NOT <b>(!)</b>: Returns <i>false</i> if its single operand can be converted to true; otherwise,
+              returns <i>true</i>.</li>
+            <li>Nullish coalescing operator <b>(??)</b>: returns its right-hand side operand when its left-hand side
+              operand is <i>null</i> or <i>undefined</i>, and otherwise returns its left-hand side operand.</li>
+          </ul>
+        </li>
+        <li><span>String</span>: in addition to the comparison operators, which can be used on string values, the
+          concatenation
+          operator <b>(+)</b> concatenates two string values together, returning another string that is the union of the
+          two operand strings.</li>
+        <li><span>Conditional or ternary operator</span> <b>(?:)</b>: is the only JavaScript operator that takes three
+          operands and the syntax is
+          <b>(condition ? val1 : val2)</b>; meaning that if condition is true, the operator returns val1, otherwise it
+          returns val2.
+        </li>
+        <li><span>Optional Chaining operator</span> <b>(?.)</b>: enables you to read the value of a property located
+          deep within a
+          chain of connected objects without having to check that each reference in the chain is valid. Basically is
+          like the chaining operator <b>(.)</b>, except that instead of causing an error if a reference is <i>nullish
+            (null or undefined)</i>, the expression shot-circuits with a return value of <i>undefined</i>.</li>
+        <li><span>Comma</span> <b>(,)</b>: evaluates both of its operands and returns the value of the last operand.
+          This operator is
+          primarily used inside a <i>for</i> loop, to allow multiple variables to be updated each time through the loop.
+        </li>
+        <li><span>Unary</span>: operate with a single operand.
+          <ul>
+            <li><b>delete</b>: deletes an object's property.</li>
+            <li><b>typeof</b>: returns a string indicating the type of the unevaluated operand.</li>
+            <li><b>void</b>: specifies an expression to be evaluated without returning a value.</li>
+          </ul>
+        </li>
+        <li><span>Relational</span>: compares its operands and returns a Boolean value based on whether the comparison
+          is true.
+          <ul>
+            <li><b>in</b>: returns true if the specified property is in the specified object.</li>
+            <li><b>instanceof</b>: returns true if the specified object is of the specified object type.</li>
+          </ul>
+        </li>
+      </ul>
+      <h3>Control Flow</h3>
+      <p>Statements in JavaScript are executed from top to bottom. </p>
+      <h4>Block statement</h4>
+      <p>The block is defined by a pair of curly brackets <b>({})</b>, and is used to group statements.</p>
+      <h4>Conditional statements</h4>
+      <p>A conditional statement is a set of commands that executes if a specified condition is true. JavaScript
+        supports two conditional statements: <b>if...else...</b> and <b>switch</b>.</p>
+      <h4>Falsy values</h4>
+      <p>A <i>falsy</i> value is a value that is considered false when encountered in a Boolean context.</p>
+      <ul>
+        <li>undefined</li>
+        <li>null</li>
+        <li>0</li>
+        <li>NaN</li>
+        <li>empty string ("")</li>
+      </ul>
+      <h3>Loops and Iteration</h3>
+      <p>Looping control flow allows us to go back to some point in the program where we were before and repeat it with
+        our current program state.</p>
+      <h4>while loop</h4>
+      <p>A statement starting with the keyword <i>while</i> creates a loop. The word <i>while</i> is followed by an
+        expression in parentheses and then a statement. The loop keeps entering that stement as long as the expression
+        produces a value that gives <i>true</i> when converted to Boolean. This is usually accompanied by a binding
+        within the body of the loop to keep track of the progress of a program.</p>
+      <h4>for loop</h4>
+      <p>A <i>for</i> loop repeats until a specified condition evaluates to <i>false</i>. The main difference between
+        the <i>while</i> loop and the <i>for</i> loop is that the latter provides a slightly shorter and more
+        comprehensive form.</p>
+      <p>The parentheses after a <i>for</i> keyword must contain two semicolons. The part before the first semicolon
+        <i>initializes</i> the loop, usually by defining a binding. The second part is the expression that <i>checks</i>
+        whether the loop must continue. The final part <i>updates</i> the state of the loop after every iteration.
+      </p>
+      <h4>for... in</h4>
+      <p>Iterates a specified variable over all the enumerable properties of an object. For each distinct property. In
+        other words, iterates over property names.</p>
+      <h4>for...of</h4>
+      <p>Creates a loop iterating over iterable objects (including Array, Map, Set, arguments object and so on),
+        invoking a custom iteration hook with statements to be executed for the value of each distinct property. In
+        other words, iterates over property values.</p>
+      <h3>Functions</h3>
+      <p>A function in JavaScript is similar to a procedure—a set of statements that performs a task or calculates a
+        value, but for a procedure to qualify as a function, it should take some input and return an output where there
+        is some obvious relationship between the input and the output. In simpler words, a function is a piece of
+        program wrapped in a value.</p>
+      <p>There are fundamentally three ways in which you can create a function:</p>
+      <ul>
+        <li>Function declaration: is a function that can be used before it's declared.</li>
+        <li>Function expression: essentially is a function value stored in a variable.</li>
+        <li>Arrow functions: great for quick one-line functions.</li>
+      </ul>
+      <p>Executing a function is called <i>invoking</i>, <i>calling</i>, or <i>applying</i> it.</p>
+      <h4>Structure of a function</h4>
+      <ul>
+        <li>Function name: the name of the binding that holds the function.</li>
+        <li>Parameters: placeholders to receive input values. Like local variables of a function.</li>
+        <li>Function body: block of code that we want to reuse. Processes the function's input data.</li>
+        <li>return statement: to output a value from the function and terminate execution.</li>
+        <li>Arguments: actual values of function parameters, to input data.</li>
+      </ul>
+      <h4>Scope</h4>
+      <p>Variables defined inside a function cannot be accessed from anywhere outside the function, because the variable
+        is defined only in the scope of the function. However, a function can access all variables and functions defined
+        inside the scope in which it is defined.</p>
+      <p>A function can refer to and call itself. A function that calls itself is called a <i>recursive function</i>,
+        which is, in some ways, analogous to a loop, in that both execute the same code multiple times.</p>
+      <h4>Nesting and closures</h4>
+      <p>You can nest a function within another function. The inner function is private to its outer function. Also, it
+        forms a <i>closure</i>.</p>
+      <p><b>Closure</b> is the <i>variable environment</i> (VE) attached to the function, exactly as it was at the time
+        and place the function was created. In other words, a <i>closure</i> gives a function access to all the
+        variables of its parent function, even after that parent function has returned. The function keeps a reference
+        to its outer scope, which preserves the scope chain throughout time.</p>
+      <h4>First-Class vs. Higher-Order Functions</h4>
+      <p><b>First-Class Functions</b></p>
+      <ul>
+        <li>JavaScript treats functions as first-class citizens.</li>
+        <li>This means that functions are simply values.</li>
+        <li>Functions are just another "type" of object.</li>
+      </ul>
+      <p><b>Higher-Order Functions</b></p>
+      <ul>
+        <li>A function that <b>receives</b> another function (<b>callback function</b>) as an argument, that
+          <b>returns</b> a new function, or <b>both</b>.
+        </li>
+        <li>This is only possible because of first-class functions.</li>
+      </ul>
+      <h3>Strings</h3>
+      <p>JavaScript's string type is used to represent textual data. It is a set of "elements" of 16-bit unsigned
+        integer values (UTF-16 code units). Each element in the String occupies a position in the String. The first
+        element is at index 0, the next at index 1, etc. You can create strings using <i>string literals</i> or
+        <i>string objects</i>.
+      </p>
+      <ul>
+        <li><span>String literals</span>: are created by enclosing characters in single or double quotes.</li>
+        <li><span>String objects</span>: is a wrapper around the string primitive data type.</li>
+        <li><span>Multi-line template literals</span>: are string literals allowing embedded expressions. You can use
+          multi-line strings and string interpolation features with them. Created by enclosing characters with
+          back-ticks <b>( ` ` )</b>, which can contain placeholders (indicated with Dollar sign and curly braces
+          <b>${expression}</b>).
+        </li>
+      </ul>
+      <p>Values of type string, number, and Boolean are not objects, and though the language doesn't complain if you try
+        to set new properties on them, it doesn't actually store those properties, because such values are immutable and
+        cannot be changed.</p>
+      <p>However you can call methods on a string literal value. So, what happens is that JavaScript automatically
+        converts the string literal to a temporary String object, calls the method, then discards the temporary String
+        object.</p>
+      <h3>Arrays</h3>
+      <p>Arrays are a reference data type for storing sequences of values. The easiest or preferred way of creating an
+        array is by enclosing elements in square brackets <b>([])</b> and separating them with a comma <b>(,)</b>, this
+        is called an array literal or bracket syntax.</p>
+      <p>The notation for getting at the elements inside an array also uses square brackets. A pair of square brackets
+        immediately after an expression, with another expression inside of them, will look up the element in the
+        left-hand expression that corresponds to the <i>index</i> given by the expression in brackets.</p>
+      <p>Just like Strings the first index of an array is zero, not one.</p>
+      <h4>Accessing Properties</h4>
+      <p>The two main ways to access properties in JavaScript are with a dot <b>(.)</b> and with square brackets
+        <b>([])</b>. Both <b>value.x</b> and <b>value[x]</b> access a property on value—but not necessarily the same
+        property. The difference is in how <i>x</i> is interpreted. When using a dot, the word after the dot is the
+        literal name of the property. When using square brackets, the expression between the brackets is
+        <i>evaluated</i> to get the property name. In other words, whereas <b>value.x</b> fetches the property of value
+        named <i>x</i>, <b>value[x]</b> tries to evaluate the expression <i>x</i> and uses the result, converted to a
+        string, as the property name.
+      </p>
+      <p>The elements in an array are stored as the arrays's properties, using numbers as property names. You can't use
+        the dot notation with numbers, this is the reason why you have to use the bracket notation to get at them.</p>
+      <h3>Objects</h3>
+      <p>An object is a collection of properties, and a property is an association between a name <i>(or key)</i> and a
+        value. A property's value can be a function, in which case the property is known as a method.</p>
+      <h4>Creating new objects</h4>
+      <ul>
+        <li><span>Object initializers</span> <b>({property1: value1, property2: value2})</b>: referred to as creating
+          objects with literal notation.</li>
+        <li><span>Constructor function</span>:
+          <ol>
+            <li>Create a function for the object type that specifies its name (capital initial letter), properties, and
+              methods.</li>
+            <li>Create an instance of the object with <b>new</b>.</li>
+          </ol>
+        </li>
+        <li><span>Object.create() method</span>: this method allows you to choose the prototype object for the object
+          you want to create, wihtout having to define a constructor function.</li>
+      </ul>
+      <h4>this keyword</h4>
+      <p>The <b>this keyword/variable</b> is a special variable that is created for every execution context (every
+        function) that takes the value of (points to) the "owner" of the function in which the <i>this</i> keyword is
+        used.</p>
+      <p><i>this</i> is NOT static. It depends on how the function is called, and its value is only assigned when the
+        function is actually called.</p>
+      <ul>
+        <li><b>Method</b>: <i>this</i> points to the Object that is calling the method.</li>
+        <li><b>Alone</b>: <i>this</i> points to the Global object.</li>
+        <li><b>Simple function call</b>: <i>this</i> points to undefined (when in strict mode, otherwise the Global
+          object, e.g., <i>window object</i> in the browser).</li>
+        <li><b>Arrow functions</b>: <i>this</i> points to the <i>this</i> of the surrounding function (lexical
+          <i>this</i>).
+        </li>
+        <li><b>Event listener</b>: <i>this</i> points to the DOM element that the handler is attached to.</li>
+        <li><b>new, call, apply, bind</b>: can refer <i>this</i> to point to any object</li>
+      </ul>
+      <h3>Object-Oriented Programming (OOP)</h3>
+      <p>Object-oriented programming is a programming paradigm based on the concept of objects. Objects are used to
+        describe real-world or abstract features. Objects are building blocks of applications, and interact with one
+        another. Interactions happen through a public interface (API): methods that the code outside of the object can
+        access and use to communicate with the object.</p>
+      <h4>Abstraction</h4>
+      <p>Ignoring or hiding details that don't matter, allowing us to get an overview perspective of the thing we are
+        implementing, instead of messing with details that don't really matter to our implementation.</p>
+      <h4>Encapsulation</h4>
+      <p>Keeping properties and methods private inside the class, so they are not accessible from outside the class.
+        Some methods can be exposed as a public interface (API).</p>
+      <h4>Inheritance</h4>
+      <p>Making all properties and methods of a certain class available to a child class, forming a hierarchical
+        relationship between classes. This allows us to reuse common logic and to model real-world relationships.</p>
+      <h4>Polymorphism</h4>
+      <p>A child class can overwrite a method it inherited from a parent class.</p>
+
+      <h3>Inheritance and the Prototype Chain</h3>
+      <p>Each object has a private property which holds a link to another object called its <b>prototype</b>. That
+        prototype object has a prototype of its own, and so on until an object is reached with a <i>null</i> as its
+        prototype, which has no prototype, and acts as the final link in the <b>prototype chain</b>.</p>
+      <p>The prototype relations of JavaScript objects form a tree-shaped structure, and at the root of this structure
+        sits <b>Object.prototype</b>.</p>
+      <h4>Classes</h4>
+      <p>JavaScript's prototype system can be interpreted as a somewhat informal take on an object-oriented concept
+        called <i>classes</i>. A class defines the shape of a type of object—what methods and properties it has. Such an
+        object is called an instance of the class.</p>
+      <p>Prototypes are useful for defining properties for which all instances of a class share the same value, such as
+        methods. Properties that differ per instance, need to be stored directly in the objects themselves.</p>
+      <h4>Ways to implement prototypal inheritance</h4>
+      <ul>
+        <li><span>Constructor Functions</span>
+          <ul>
+            <li>Just a function that happens to be called with the <i>new</i> operator.</li>
+            <li>Technique to create objects from a function.</li>
+            <li>This is how built-in objects like Arrays, Maps or Sets are actually implemented.</li>
+          </ul>
+        </li>
+        <li><span>ES6 Classes</span>
+          <ul>
+            <li>Modern alternativeto constructor function syntax.</li>
+            <li>"Syntactic sugar"; behind the scenes, ES6 classes work exactly like constructor functions.</li>
+            <li>ES6 classes do NOT behave like classes in "classical OOP".</li>
+          </ul>
+        </li>
+        <li><span>Object.create()</span>
+          <ul>
+            <li>The easiest and most straightforward way of linking an object to a prototype object.</li>
+          </ul>
+        </li>
+      </ul>
+      <h3>The Document Object Model (DOM)</h3>
+      <p>The DOM connects web pages to scripts or programming languages by representing the structure of a document—such
+        as the HTML representing a web page—in memory. The Document Object Model is an architecture that describes the
+        structure of a document; each document is represented by an instance of the interface Document. A document, in
+        turn, consists of a hierarchical tree of <b>nodes</b>, in which a node is a fundamental record representing a
+        single object wihtin the document.</p>
+      <p>Nodes may be strictly organizational ,providing a means for grouping other nodes together or for providing a
+        point at which a hierarchy can be constructed; other nodes may represent visible components of a document.</p>
+      <p>Nodes don't have any concept of including the content that is actually displayed in the document. They're empty
+        vessels. Some of the features added to the Document by the HTML standard are:</p>
+      <ul>
+        <li>Support for accessing various information provided by the HTTP headers when loading the page, such as the
+          location from which the document was loaded, cookies, modification date, etc.</li>
+        <li>Access to list elements in the document.</li>
+        <li>Support for interacting with the user.</li>
+        <li>Event handlers for document events defined by the HTML standard to allow access to mouse and keyboard
+          events, drag and drop, etc.</li>
+        <li>Event handlers for events that can be delivered to both elements and documents; presently only copy, cut and
+          paste actions.</li>
+      </ul>
+      <p>Also, an element inherits the properties and methods of all its ancestors. Each level defines a key aspect of
+        the utility of the element. From Node, the element inherits concepts surrounding the ability for the element to
+        be contained by another element, and to contain other elements itself. Of special importance is what is gained
+        by inheriting from EventTarget, which is the ability to receive and handle events such as mouse clicks, play and
+        pause events, and so forth.</p>
+      <h4>Propagation</h4>
+      <p>For most event types, handlers registered on nodes with children will aso receive events that happen in the
+        children. If a button inside a paragraph is clicked, event hanlders on the paragraph will also see the click
+        event.</p>
+      <p>Events are said to propagate outward, from the node where it happened to that node's parent node and on the the
+        root of the document.Finally, after all handlers registered on a specific node have had their turn, handlers
+        registered on the whole window got a chance to respond to the event.</p>
+      <p>Most event objects have a <i>target</i> property that refers to the node where they originated. You can use
+        this property to ensure that you're not accidentally handling something that propagated up from a node you do
+        not want to handle. It is also possible to use the <i>target</i> property to cast a wide net for a specific type
+        of event.</p>
+      <h3>Asynchronicity</h3>
+      <p>JavaScript is traditionally <b>single-threaded</b>. Even with multiple cores, you could only get it to run
+        tasks on a single thread, called the main thread. After some time, JavaScript gained some tools to help with
+        such problems. <b>Web workders</b> allow you to send some of the JavaScript processing off to a separate thread,
+        called a worker so that you can run multiple chunks simultaneously.</p>
+      <p>Web workers are pretty useful, but they do have their limitations. A major one is they are not able to access
+        the DOM. Another problem is that although code run in a worker is not blocking(refers to code that executes
+        without returning control to the browser), it is still basically synchronous.</p>
+      <ul>
+        <li>An <i>asynchronous</i> model allows multiple things to happen at the same time.</li>
+        <li>Asynchronous code is executed after a task that runs in the "background" finishes.</li>
+        <li>Asynchronous code is non-blocking.</li>
+        <li>Execution doesn't wait for an asynchronous task to finish it's work.</li>
+        <li>Callback functions alone do NOT make code asynchronous.</li>
+      </ul>
+      <h4>AJAX</h4>
+      <p><b>A</b>synchronous <b>J</b>avaScrypt <b>A</b>nd <b>X</b>ML. Allows us to communicate with remote web servers
+        in an asynchronous way. With AJAX calls, we can request data from web servers dynamically using a technology
+        known as XMLHttpRequest.</p>
+      <p>XMLHttpRequest (XHR) objects are used to interact with servers. You can retreive data from a URL without having
+        to do a full page refresh. Despite its name, XHR can be used to retrieve any type of data, not just XML.</p>
+      <p>There have been a number of developments in the techonologies used in AJAX application, and in the definition
+        of the term AJAX itself. XML is no longer required for data interchange and, therefore, XSLT is no longer
+        required for the manipulation of data. JavaScript Object Notation (JSON) is often used as an alternative format
+        for data interchange, although other formats such as preformatted HTML or plain text can also be used.</p>
+      <h4>Promises</h4>
+      <p>Promises are the new style of async code that you'll see used in modern Web APIs. A good example is the
+        <b>fetch()</b> API, which is basically like a modern, more efficient version of XMLHttpRequest.
+      </p>
+      <ul>
+        <li>A promise is an object that is used as a placeholder for the future result of an asynchronous operation.
+        </li>
+        <li>We no longer need to rely on events and callbacks passed into asynchronous functions to handle asynchronous
+          results.</li>
+        <li>Instead of nesting callbacks, we can <b>chain promises</b> for a sequence of asynchronous operations: thus
+          escaping <b>callback hell <span id="devil">👹</span></b></li>
+      </ul>
+      <p>Promise Lifecycle</p>
+      <ul>
+        <li><b>Pending</b>: Before the future value is available.</li>
+        <li><b>Settled</b>: Asynchronous task has finished.
+          <ul>
+            <li><b>Fulfilled</b>: Success, the value is now available.</li>
+            <li><b>Rejected</b>: An error, value not available.</li>
+          </ul>
+        </li>
+      </ul>
+      <h4>Async/Await</h4>
+      <p>JavaScript allows you to write pseudo-synchronous code to describe asynchronous computation. An <b>async</b>
+        function is a function that implicitly returns a promise and that can, in its body, <b>await</b> other promises
+        in a way that <i>looks</i> synchronous.</p>
+      <p>The <b>async</b> functions and <b>await</b> keyword were added in ECMAScript 2017. These features basically act
+        as syntactic sugar on top of promises, making asynchronous code easier to write and to read afterwards.</p>
+      <ul>
+        <li><span><code>async</code> keyword</span>: is put in front of a function declaration to turn it into an async
+          function.
+        </li>
+        <li><span><code>await</code></span> keyword</span>: await can be put in front of any async promise-based
+          function
+          to pause your code
+          on that line until the promise fulfills, then return the resulting value.</li>
+      </ul>
+      <p>Instead of needing to chain an <code>.then()</code> on the end of each promised-based method, you just need to
+        add an <code>await</code> keyword before the method call, and then assign the result to a variable.</p>
+      <p>Also, <b>async/await</b> is built on top of <b>promises</b>, so it's compatible with all the features offered
+        by promises.</p>
+    </article>
+    <article id="react">
+      <h2>React</h2>
+    </article>
+  </main>
+  <footer>
+    <p>&copy;By Zhadox |'•'_'•'|</p>
+  </footer>
+</body>
+
+</html>
