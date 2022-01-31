@@ -12,7 +12,7 @@ from resources.store import Store, StoreList
 app = Flask(__name__)
 db_url= os.environ.get("DATABASE_URL", "sqlite:///data.db")
 if db_url != "sqlite:///data.db":
-  if db_url[:10] != "postgresql":
+  if db_url[:10] != "postgresql": #in case it is passed a 'postgres:<conn>' string
     db_url= f"postgresql{db_url[8:]}"
 app.config['SQLALCHEMY_DATABASE_URI']= db_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
