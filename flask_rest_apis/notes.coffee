@@ -43,7 +43,7 @@ web: uwsgi uwsgi.ini
 2>'Create another user':
   useradd <new_user>
   #add password
-  passwd <new_user>
+  passwd <password>
   #provide the user with sudo privileges
   visudo
   #add a new line under the root user:
@@ -141,7 +141,7 @@ web: uwsgi uwsgi.ini
   #verify firewall settings
   sudo firewall-cmd --list-all
   #check that host="0.0.0.0" when app is run in python file
-  app.run(host="0.0.0.0")  #default port is 5000
+    app.run(host="0.0.0.0")  #default port is 5000
   #activate virtual environment
   source venv/bin/activate
   #run app using python (#1)
@@ -157,7 +157,7 @@ web: uwsgi uwsgi.ini
   sudo -iu postgres
   #run psql client
   psql
-  #add password to db <new_user>
+  #add new_password to db <new_user>
   ALTER USER <new_user> PASSWORD '<new-password>';
   #exit psql
   \q + enter
@@ -188,7 +188,7 @@ web: uwsgi uwsgi.ini
   #install uwsgi inside venv
   pip install uwsgi
   #check wsgi.py is like this:
-  app.run()   #no host or port
+    app.run()   #no host or port
   #run using uwsgi (#1)
   uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi:app
   #verify it is working, close app and disable port 5000 by reloading the firewall
@@ -228,7 +228,7 @@ web: uwsgi uwsgi.ini
           uwsgi_pass unix:/home/<new_user>/Devs/<git_repo_location>/sockets/myproject.sock;
       }
     }
-  #in the app folder
+  #in the app folder (/home/<new_user>/Devs/<git_repo_location>)
   vim uwsgi.ini
   'uwsgi.ini':
     [uwsgi]
@@ -252,21 +252,23 @@ web: uwsgi uwsgi.ini
   uwsgi --ini uwsgi.ini
   #this will produce a 502 bad gateway error on the browser
   #SELinux is preventing access
-  sudo journalctl -t setroubleshoot
+  sudo journalctl -t setroubleshoot -r
   #You will see what SELinux is preventing and a series of steps to 'audit' (add exceptions to) them
   sudo ausearch -c 'nginx' --raw | audit2allow -M my-nginx_1
   sudo semodule -i my-nginx_1.pp
   #another useful command to check nginx errors is:
   sudo tail /var/log/nginx/error.log
+  #check general log messages
+  sudo tail /var/log/messages
 
   #run using uwsgi (#3) test emperor with log
-  uwsgi --master --emperor uwsgi.ini --logto /home/<new_user>/devs/<git_repo_location>/log/emperor.log
+  uwsgi --master --emperor uwsgi.ini --logto /home/<new_user>/Devs/<git_repo_location>/log/emperor.log
   #verify everything is being accessed and logged.
   #stop uwsgi and deactivate venv
   deactivate
 
 8>'Enable HTTPS':
-  #get or purchase domain
+  #get(freenom.com) or purchase domain (namecheap.com)
   #associate domain with server ip address
   #get certificate and key for domain
   #add epel repository
@@ -323,7 +325,7 @@ web: uwsgi uwsgi.ini
 
       location / {
         include uwsgi_params;
-        uwsgi_pass unix:/home/kura/Devs/renshuu_rest-api-on-server/sockets/myproject.sock;
+        uwsgi_pass unix:/home/<new_user>/devs/<git_repo_location>/sockets/myproject.sock;
       }
       ssl_certificate /etc/letsencrypt/live/<website_name.domain>/fullchain.pem; # managed by Certbot
       ssl_certificate_key /etc/letsencrypt/live/<website_name.domain>/privkey.pem; # managed by Certbot
@@ -356,4 +358,48 @@ web: uwsgi uwsgi.ini
     deactivate
 
 9>'Create uwsgi service':
+  #define uwsgi service in the system:
+  sudo vim /etc/systemd/system/myproject_uwsgi.service
+  'myproject_uwsgi.service':
+    [Unit]
+    Description=uWSGI items rest
+    After=network.target
+
+    [Service]
+    User=kura
+    Group=kura
+    WorkingDirectory=/home/<new_user>/Devs/<git_repo_location>
+    Environment=DATABASE_URL="postgresql://<new_user>:<new_password>@localhost:5432/<new_user>"
+    ExecStart=/home/<new_user>/Devs/<git_repo_location>/venv/bin/uwsgi --master --emperor uwsgi.ini --logto /home/<new_user>/Devs/<git_repo_location>/log/emperor.log
+    Restart=always
+    KillSignal=SIGQUIT
+    Type=notify
+    NotifyAccess=all
+
+    [Install]
+    WantedBy=multi-user.target
+  #save changes
+  #Loop 3 times
+    #run service:
+    sudo systemctl start myproject_uwsgi
+    #this will fail and process will exit with error code
+    #SELinux is preventing access [file access]
+    sudo journalctl -t setroubleshoot -r
+    #You will see what SELinux is preventing and a series of steps to 'audit' (add exceptions to) them
+    sudo ausearch -c '(uwsgi)' --raw | audit2allow -M my-uwsgi_1 #then this can be my-uwsgi_2 and so on
+    sudo semodule -i my-uwsgi_1.pp
+  #Loop 3 times (or until project starts)
+    sudo systemctl start myproject_uwsgi
+    #if error:
+    sudo ausearch -c 'uwsgi' --raw | audit2allow -M my-uwsgi_4
+    sudo semodule -i my-uwsgi_4.pp
+  #now try acces <website_name.domain> in the browser
+  #you will see a 502 bad gateway error
+  #SELinux is preventing access [socket accesses]
+  #Loop until 502 error is gone (4 times)
+    sudo ausearch -c 'uwsgi' --raw | audit2allow -M my-uwsgi_7
+    sudo semodule -i my-uwsgi_7.pp
+  #verify app is correctly deployed and working
+  #enable myproject_uwsgi service (the process will load everytime when booting)
+  sudo systemctl enable myproject_uwsgi
 
